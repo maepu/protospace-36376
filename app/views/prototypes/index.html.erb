@@ -1,0 +1,17 @@
+<main class="main">
+  <div class="inner">
+    <%# ログインしているときは以下を表示する %>
+    <% if user_signed_in? %>
+       <div class= greeting> 
+        <%= "こんにちは、#{current_user.name}さん！" %>
+       </div> 
+      <% else %>
+        <% link_to "ログイン", user_session_path, class: "post" %>
+        <% link_to "新規登録", user_registration_path, class: "post" %>
+         <%= "初めまして！" %>
+    <% end %>
+    <div class="card__wrapper">
+      <%= render partial: 'prototypes/prototype', collection: @prototypes %>
+    </div>
+  </div>
+</main>
