@@ -1,4 +1,4 @@
-#users テーブル
+#users table
 
 | Column   | Type       | Options                        |
 | ------   | ---------- | ------------------------------ |
@@ -12,24 +12,23 @@
 has_many : comments
 has_many : prototypes
 
-#prototypes テーブル
+#prototypes table
 | Column | Type       |Options                          |
 | ------ | ---------- | ------------------------------- |
 | title  | string     | null: false |
 | catch_copy | text | null: false |
 | concept | text | null: false |
-| image | ActiveStorage |
-| user | references | 
+| user | references | foreign_key: true |
 
 has_many : comments
 belongs_to : users
 
-#comments テーブル
+#comments table
 | Column | Type       |Options|
 | ------ | ---------- | ----- |
 | text   | text       | null:false |
-| user   | references |
-| prototype | references |
+| user   | references | foreign_key: true |
+| prototype | references | foreign_key: true |
 
-belongs_to : users
-belongs_to : prototypes
+belongs_to : user
+belongs_to : prototype
